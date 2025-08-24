@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KPK Flood Impact Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 400px;
+            max-height: 50vh;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <div class="bg-[#004d40] text-white text-center py-3 mb-8 shadow-lg">
+        <p class="text-lg mb-2">This infographic provides a quick, visual overview of the KPK Flood Impact data.</p>
+        <a href="https://econ-owaisali.shinyapps.io/kpk_flood_dashboard/" target="_blank" class="text-xl font-semibold hover:underline flex items-center justify-center space-x-2">
+            <span>To see the full project dashboard, visit:</span>
+            <span class="text-[#80cbc4] font-bold text-2xl">Owais Ali Shah's Dashboard</span>
+            <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6 inline-block ml-1">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75v-1.5m-1.5-7.5l.004-.004c.3-.08.5-.278.5-.494V8.25a2.25 2.25 0 00-2.25-2.25h-5.25c-.216 0-.414.2-.494.5l-.004.004M19.5 12l2.25-2.25l-2.25-2.25M19.5 12H15" />
+            </svg></span>
+        </a>
+    </div>
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-[#004d40] mb-2">Khyber Pakhtunkhwa Flood Impact</h1>
+            <p class="text-lg text-[#00796b]">A data-driven overview of flood-affected areas from 2010-2023</p>
+        </header>
+
+        <section id="overview" class="mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                    <h2 class="text-2xl font-semibold text-[#00796b] mb-2">Total Affected Area</h2>
+                    <p class="text-5xl font-bold text-[#004d40]">628,000</p>
+                    <p class="text-gray-500">Hectares</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                    <h2 class="text-2xl font-semibold text-[#00796b] mb-2">Most Affected Year</h2>
+                    <p class="text-5xl font-bold text-[#004d40]">2022</p>
+                    <p class="text-gray-500">with 270,000 Ha affected</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                    <h2 class="text-2xl font-semibold text-[#00796b] mb-2">Most Affected District</h2>
+                    <p class="text-5xl font-bold text-[#004d40]">Swat</p>
+                    <p class="text-gray-500">with 112,500 Ha affected in total</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="trends" class="mb-12 bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-3xl font-bold text-center text-[#004d40] mb-4">Flood Impact Over Time</h2>
+            <p class="text-center text-gray-600 mb-8">The chart below illustrates the total area affected by floods each year. The years 2010 and 2022 stand out as periods of severe flooding, indicating major catastrophic events in those years.</p>
+            <div class="chart-container">
+                <canvas id="yearlyTrendChart"></canvas>
+            </div>
+        </section>
+
+        <section id="district-comparison" class="mb-12 bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-3xl font-bold text-center text-[#004d40] mb-4">District Hotspots</h2>
+            <p class="text-center text-gray-600 mb-8">This comparison highlights the districts most impacted by floods over the entire period. Swat, Charsadda, and Nowshera have consistently been the most vulnerable regions.</p>
+            <div class="chart-container">
+                <canvas id="districtBarChart"></canvas>
+            </div>
+        </section>
+
+        <section id="year-breakdown" class="mb-12 bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-3xl font-bold text-center text-[#004d40] mb-4">Top 5 Districts in Worst Flood Years</h2>
+             <p class="text-center text-gray-600 mb-8">A closer look at the two most devastating years, 2010 and 2022, reveals which districts bore the brunt of the floods. This helps in understanding geographical vulnerability during major flood events.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold text-center text-[#00796b] mb-4">2010 Flood Event</h3>
+                    <div class="chart-container" style="height: 300px;">
+                        <canvas id="donut2010"></canvas>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold text-center text-[#00796b] mb-4">2022 Flood Event</h3>
+                    <div class="chart-container" style="height: 300px;">
+                        <canvas id="donut2022"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer class="text-center p-4 bg-[#004d40] text-white">
+        <p>Infographic by Owais Ali Shah | Data Source: KPK Flood Data</p>
+    </footer>
+
+    <script>
+        const floodData = [
+            { "Year": 2010, "district": "Charsadda", "Affected_Area_Ha": 55000 },
+            { "Year": 2010, "district": "Nowshera", "Affected_Area_Ha": 48000 },
+            { "Year": 2010, "district": "Peshawar", "Affected_Area_Ha": 32000 },
+            { "Year": 2010, "district": "Swat", "Affected_Area_Ha": 41000 },
+            { "Year": 2010, "district": "Dir Lower", "Affected_Area_Ha": 25000 },
+            { "Year": 2010, "district": "D.I.Khan", "Affected_Area_Ha": 38000 },
+            { "Year": 2010, "district": "Tank", "Affected_Area_Ha": 21000 },
+            { "Year": 2011, "district": "Kohistan", "Affected_Area_Ha": 12000 },
+            { "Year": 2011, "district": "Mansehra", "Affected_Area_Ha": 9000 },
+            { "Year": 2012, "district": "Chitral", "Affected_Area_Ha": 15000 },
+            { "Year": 2012, "district": "Peshawar", "Affected_Area_Ha": 5000 },
+            { "Year": 2013, "district": "Nowshera", "Affected_Area_Ha": 8500 },
+            { "Year": 2014, "district": "D.I.Khan", "Affected_Area_Ha": 11000 },
+            { "Year": 2014, "district": "Tank", "Affected_Area_Ha": 7500 },
+            { "Year": 2015, "district": "Chitral", "Affected_Area_Ha": 22000 },
+            { "Year": 2015, "district": "Shangla", "Affected_Area_Ha": 13000 },
+            { "Year": 2016, "district": "Swat", "Affected_Area_Ha": 9500 },
+            { "Year": 2017, "district": "Mansehra", "Affected_Area_Ha": 6000 },
+            { "Year": 2018, "district": "Peshawar", "Affected_Area_Ha": 4000 },
+            { "Year": 2019, "district": "Dir Upper", "Affected_Area_Ha": 7000 },
+            { "Year": 2020, "district": "Kohistan", "Affected_Area_Ha": 14000 },
+            { "Year": 2020, "district": "Bannu", "Affected_Area_Ha": 8000 },
+            { "Year": 2021, "district": "Mardan", "Affected_Area_Ha": 5500 },
+            { "Year": 2022, "district": "Swat", "Affected_Area_Ha": 62000 },
+            { "Year": 2022, "district": "Dir Lower", "Affected_Area_Ha": 45000 },
+            { "Year": 2022, "district": "Charsadda", "Affected_Area_Ha": 41000 },
+            { "Year": 2022, "district": "Nowshera", "Affected_Area_Ha": 38000 },
+            { "Year": 2022, "district": "D.I.Khan", "Affected_Area_Ha": 35000 },
+            { "Year": 2022, "district": "Tank", "Affected_Area_Ha": 29000 },
+            { "Year": 2022, "district": "Kohistan", "Affected_Area_Ha": 25000 },
+            { "Year": 2023, "district": "Chitral", "Affected_Area_Ha": 18000 },
+            { "Year": 2023, "district": "Shangla", "Affected_Area_Ha": 11000 }
+        ];
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+        
+        const colors = {
+            primary: '#00796b',
+            secondary: '#004d40',
+            accent1: '#80cbc4',
+            accent2: '#4db6ac',
+            accent3: '#26a69a',
+            accent4: '#009688',
+            accent5: '#00897b',
+        };
+
+        const yearlyData = floodData.reduce((acc, curr) => {
+            acc[curr.Year] = (acc[curr.Year] || 0) + curr.Affected_Area_Ha;
+            return acc;
+        }, {});
+        
+        new Chart(document.getElementById('yearlyTrendChart'), {
+            type: 'line',
+            data: {
+                labels: Object.keys(yearlyData),
+                datasets: [{
+                    label: 'Total Affected Area (Ha)',
+                    data: Object.values(yearlyData),
+                    borderColor: colors.primary,
+                    backgroundColor: 'rgba(0, 121, 107, 0.1)',
+                    fill: true,
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                },
+                scales: {
+                    y: { beginAtZero: true, grid: { color: '#e0f2f1' } },
+                    x: { grid: { display: false } }
+                }
+            }
+        });
+
+        const districtData = floodData.reduce((acc, curr) => {
+            acc[curr.district] = (acc[curr.district] || 0) + curr.Affected_Area_Ha;
+            return acc;
+        }, {});
+        const sortedDistricts = Object.entries(districtData).sort(([, a], [, b]) => b - a);
+
+        new Chart(document.getElementById('districtBarChart'), {
+            type: 'bar',
+            data: {
+                labels: sortedDistricts.map(d => d[0]),
+                datasets: [{
+                    label: 'Total Affected Area (Ha)',
+                    data: sortedDistricts.map(d => d[1]),
+                    backgroundColor: [colors.primary, colors.accent4, colors.accent3, colors.accent2, colors.accent1],
+                    borderColor: colors.secondary,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                },
+                scales: {
+                    x: { beginAtZero: true, grid: { color: '#e0f2f1' } },
+                    y: { grid: { display: false } }
+                }
+            }
+        });
+        
+        const top5_2010 = floodData.filter(d => d.Year === 2010).sort((a,b) => b.Affected_Area_Ha - a.Affected_Area_Ha).slice(0,5);
+        new Chart(document.getElementById('donut2010'), {
+            type: 'doughnut',
+            data: {
+                labels: top5_2010.map(d => d.district),
+                datasets: [{
+                    data: top5_2010.map(d => d.Affected_Area_Ha),
+                    backgroundColor: [colors.primary, colors.accent4, colors.accent3, colors.accent2, colors.accent1],
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'top' },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+
+        const top5_2022 = floodData.filter(d => d.Year === 2022).sort((a,b) => b.Affected_Area_Ha - a.Affected_Area_Ha).slice(0,5);
+        new Chart(document.getElementById('donut2022'), {
+            type: 'doughnut',
+            data: {
+                labels: top5_2022.map(d => d.district),
+                datasets: [{
+                    data: top5_2022.map(d => d.Affected_Area_Ha),
+                    backgroundColor: [colors.primary, colors.accent4, colors.accent3, colors.accent2, colors.accent1],
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'top' },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>
