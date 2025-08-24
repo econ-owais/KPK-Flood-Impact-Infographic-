@@ -1,4 +1,4 @@
- # 🌐 [Explore the Full Dashboard](https://econ-owaisali.shinyapps.io/kpk_flood_dashboard/)
+ # 🌐 [Explore the Full Dashboard]  (https://econ-owaisali.shinyapps.io/kpk_flood_dashboard/)
 
 > Dive deeper into interactive flood analytics for Khyber Pakhtunkhwa (KPK), Pakistan.  
 > Featuring district-level filters, multilingual support, and dynamic visualizations.
